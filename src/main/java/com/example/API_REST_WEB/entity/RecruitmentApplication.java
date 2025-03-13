@@ -35,4 +35,10 @@ public class RecruitmentApplication {
 
     @Column(nullable = false)
     private String comments;
+
+    public static class ApplicationStatus {
+        public static final String PENDING = "PENDING";
+        public static final String ACCEPTED = "ACCEPTED";
+        public static final String REJECTED = "REJECTED";
+    }
 }
