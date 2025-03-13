@@ -39,6 +39,8 @@ public class Lodging {
     @Column(nullable = false)
     private String imageUrl;
 
+    private boolean available = true;
+
     @OneToMany(mappedBy = "lodging", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Reservation> reservations = new HashSet<>();
 }

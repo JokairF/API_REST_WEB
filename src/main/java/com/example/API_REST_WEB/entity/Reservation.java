@@ -37,12 +37,13 @@ public class Reservation {
     @Column(nullable = false)
     private Boolean isCancelled = false;
 
+    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private String status;
+    private ReservationStatus status;
 
-    public static class ReservationStatus {
-        public static final String PENDING = "PENDING";
-        public static final String CONFIRMED = "CONFIRMED";
-        public static final String CANCELLED = "CANCELLED";
+    public enum ReservationStatus {
+        PENDING,
+        CONFIRMED,
+        CANCELLED
     }
 }
