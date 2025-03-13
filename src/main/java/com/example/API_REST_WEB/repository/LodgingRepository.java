@@ -10,8 +10,11 @@ import java.util.List;
 
 @Repository
 public interface LodgingRepository extends JpaRepository<Lodging, Long> {
+    @Query("SELECT l FROM Lodging l WHERE l.available = true")
     List<Lodging> findByAvailableTrue();
-    List<Lodging> findByLocationContainingIgnoreCase(String location);
+
+    @Query("SELECT l FROM Lodging l WHERE l.address LIKE %:address%")
+    List<Lodging> findByAddressContainingIgnoreCase(String address);
 
     @Query("SELECT l FROM Lodging l WHERE l.capacity >= :guestCount AND l.available = true")
     List<Lodging> findAvailableLodgingsForGuests(int guestCount);
