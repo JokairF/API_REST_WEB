@@ -24,6 +24,10 @@ public interface ReservationRepository extends JpaRepository<Reservation, Long> 
             "r.status <> com.example.API_REST_WEB.entity.Reservation.ReservationStatus.CANCELLED")
     List<Reservation> findOverlappingReservations(Long lodgingId, LocalDate checkIn, LocalDate checkOut);
 
+    @Query("SELECT COUNT(r) FROM Reservation r WHERE r.lodging.id = :lodgingId AND " +
+            "r.status = com.example.API_REST_WEB.entity.Reservation.ReservationStatus.PENDING")
+    long countPendingReservationsByLodging(Long lodgingId);
+
     @Query("SELECT COUNT(r) FROM Reservation r WHERE r.user.id = :userId AND " +
             "r.status = com.example.API_REST_WEB.entity.Reservation.ReservationStatus.CONFIRMED")
     long countActiveReservationsByUser(Long userId);

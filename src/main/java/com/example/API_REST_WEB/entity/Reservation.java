@@ -37,4 +37,12 @@ public class Reservation {
     @Column(nullable = false)
     private Boolean isCancelled = false;
 
+    @Column(nullable = false)
+    private String status;
+
+    public static class ReservationStatus {
+        public static final String PENDING = "PENDING";
+        public static final String CONFIRMED = "CONFIRMED";
+        public static final String CANCELLED = "CANCELLED";
+    }
 }
