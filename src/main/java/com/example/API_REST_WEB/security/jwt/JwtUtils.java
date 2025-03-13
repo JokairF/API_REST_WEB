@@ -1,10 +1,11 @@
 package com.example.API_REST_WEB.security.jwt;
 
 import com.example.API_REST_WEB.config.JwtConfig;
-import com.example.API_REST_WEB.service.UserDetailsServiceImpl;
+import com.example.API_REST_WEB.service.UserService;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
 import java.util.Date;
@@ -15,7 +16,7 @@ public class JwtUtils {
     private final JwtConfig jwtConfig;
 
     public String generateJwtToken(Authentication authentication) {
-        UserDetailsServiceImpl userPrincipal = (UserDetailsServiceImpl) authentication.getPrincipal();
+        UserDetails userPrincipal = (UserDetails) authentication.getPrincipal();
 
         return Jwts.builder()
                 .setSubject(userPrincipal.getUsername())
