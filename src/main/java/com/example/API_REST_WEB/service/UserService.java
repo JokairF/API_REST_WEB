@@ -4,7 +4,9 @@ import com.example.API_REST_WEB.entity.Role;
 import com.example.API_REST_WEB.entity.User;
 import com.example.API_REST_WEB.repository.RoleRepository;
 import com.example.API_REST_WEB.repository.UserRepository;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -19,6 +21,7 @@ import java.util.Set;
 @Service
 @RequiredArgsConstructor
 public class UserService {
+
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder encoder;
@@ -98,11 +101,5 @@ public class UserService {
         }
         logger.info("Deleting user with id: {}", id);
         userRepository.deleteById(id);
-    }
-
-   public UserDetails loadUserByUsername(String username) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new RuntimeException("User not found with username: " + username));
-        return UserDetailsServiceImpl.build(user);
     }
 }
