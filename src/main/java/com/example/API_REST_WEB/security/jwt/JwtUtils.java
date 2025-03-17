@@ -1,7 +1,6 @@
 package com.example.API_REST_WEB.security.jwt;
 
 import com.example.API_REST_WEB.config.JwtConfig;
-import com.example.API_REST_WEB.service.UserService;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;

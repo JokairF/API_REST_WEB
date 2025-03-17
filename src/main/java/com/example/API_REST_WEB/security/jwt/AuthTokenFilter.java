@@ -1,6 +1,5 @@
 package com.example.API_REST_WEB.security.jwt;
 
-import com.example.API_REST_WEB.service.UserService;
 import io.jsonwebtoken.io.IOException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
